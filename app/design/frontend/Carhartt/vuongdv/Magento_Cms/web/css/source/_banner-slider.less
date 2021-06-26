@@ -1,0 +1,155 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .banner-item.banner-slider {
+        position: relative;
+        .banner {
+            &-content {
+                position: absolute;
+                text-align: center;
+                left: 50%;
+            }
+        }
+    }
+
+    //  Message section
+    .message {
+        background: @color-button-hollow;
+        color: @color-white;
+        text-align: center;
+        h5 {
+            margin: 0;
+            &:first-child {
+                text-transform: uppercase;
+            }
+            &:last-child {
+                font-family: @font-family__karla-regular;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .banner-slider {
+        &-mobile {
+            display: block;
+        }
+        &-desktop {
+            display: none;
+        }
+    }
+    .banner {
+        &-content {
+            width: 75%;
+            top: 55%;
+            transform: translate(-50%, -62.4%);
+        }
+        &-text {
+            margin-bottom: 19px;
+            h1 {
+                font-family: @font-family__karla-bold;
+                letter-spacing: .15px;
+            }
+        }
+        &-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .hollow-button.item {
+                font-size: @font-size-14;
+                &:first-child {
+                    margin-bottom: 16px;
+                    padding: 16px 42px;
+                }
+                &:last-child {
+                    padding: 16px 39px;
+                }
+            }
+        }
+    }
+
+    //  Message section
+    .message {
+        padding: 16px 0 18px;
+        h5 {
+            &:first-child {
+                padding-bottom: 2px;
+                letter-spacing: .18px;
+            }
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: @screen__l) {
+        .banner-item.banner-slider .banner-content {
+            width: 60%;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .banner-slider-mobile {
+        display: none;
+    }
+    .banner-item.banner-slider {
+        .banner {
+            &-content {
+                width: 33%;
+                top: 52%;
+                transform: translate(-50%, -63%);
+            }
+            &-text {
+                margin-bottom: 36px;
+                h1 {
+                    margin-bottom: 6px;
+                }
+            }
+            &-button {
+                a {
+                    padding: 14px 42px;
+                    font-size: @font-size-14;
+                    line-height: @line-height-14;
+                    margin: 0 6px;
+                    &:last-child {
+                        padding: 14px 38px;
+                    }
+                }
+            }
+        }
+    }
+
+    //  Message section
+    .message {
+        padding: 16px 0 18px;
+        margin-top: -30px;
+        h5  {
+            &:first-child {
+                letter-spacing: .2px;
+                padding-bottom: 2px;
+            }
+            &:last-child {
+                letter-spacing: .05px;
+                margin-left: 3px;
+            }
+        }
+    }
+}

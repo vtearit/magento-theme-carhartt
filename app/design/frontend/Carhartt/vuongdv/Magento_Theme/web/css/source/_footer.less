@@ -1,0 +1,110 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    //  Footer social section
+    .footer-social {
+        &-inner {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            li {
+                display: inline-block;
+                margin: 0 6.25px;
+                display: inline-block;
+                background-color: @color-carhartt;
+                a {
+                    padding: 5px;
+                    display: block;
+                    width: 14px;
+                }
+            }
+        }
+    }
+
+    //  Footer nav section
+    .footer-nav {
+        &-inner {
+            display: flex;
+            justify-content: center;
+            .nav-item {
+                color: @color-carhartt;
+                text-transform: uppercase;
+                letter-spacing: .15px;
+                h5 {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    // // Newsletter section
+    // .footer.content {
+    //     display: flex;
+    //     justify-content: center;
+    // }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    //  Footer social section
+    .footer-social {
+        padding: 1px 0 32px;
+        border-bottom: 1px solid @color-social-border;
+    }
+
+    //  Footer nav section
+    .footer-nav {
+        padding: 29px 24px;
+        &-inner {
+            flex-wrap: wrap;
+            .nav-item {
+                margin: 0 0 24px;
+                width: 50%;
+                &:last-child {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: @screen__l) {
+        .footer-nav-inner {
+            flex-wrap: wrap;
+            .nav-item {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //  Footer social section
+    .footer-social {
+        padding: 34px 0;
+    }
+
+    //  Footer nav section
+    .footer-nav {
+        padding: 13px 0;
+        &-inner {
+            .nav-item {
+                margin: 0px 12.8px;
+            }
+        }
+    }
+}

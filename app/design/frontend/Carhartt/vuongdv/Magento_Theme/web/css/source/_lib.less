@@ -1,0 +1,49 @@
+//
+//  Action Library
+//  _____________________________________________
+
+.hover-action (@_transform)
+{
+    -webkit-transform: scale(@_transform) translateZ(0);
+    transform: scale(@_transform) translateZ(0);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+/* Rotate Properties */
+.rotate-properties (@_value : @value)
+{
+    -webkit-transform: rotate(@_value);
+    -moz-transform: rotate(@_value);
+    -o-transform: rotate(@_value);
+}
+
+/* Rotate Animation */
+
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes itemRotate {
+    from{
+        .rotate-properties(0deg);
+    }
+    to{
+        .rotate-properties(360deg);
+    }
+}
+
+/* Standard syntax */ 
+@keyframes itemRotate {
+    from{
+        .rotate-properties(0deg);
+    }
+    to{
+        .rotate-properties(360deg);
+    }
+}
+
+.itemRotate(@_time : @time) {
+    animation: itemRotate @_time linear 0s infinite;
+    -webkit-animation: itemRotate @_time linear 0s infinite;
+    -moz-animation: itemRotate @_time linear 0s infinite;
+    -o-animation: itemRotate @_time linear 0s infinite;
+}

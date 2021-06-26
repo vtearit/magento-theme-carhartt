@@ -1,0 +1,108 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/opensans/light/opensans-300',
+        @font-weight: 300,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/opensans/regular/opensans-400',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/opensans/semibold/opensans-600',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/opensans/bold/opensans-700',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    //  Fonts karla
+    .lib-font-face(
+        @family-name: @font-family-name__karla-bold,
+        @font-path: '@{baseDir}fonts/Karla-Bold',
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__karla-medium,
+        @font-path: '@{baseDir}fonts/Karla-Medium',
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-name__karla-regular,
+        @font-path: '@{baseDir}fonts/Karla-Regular',
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    //  Fonts awesome
+    .lib-font-face(
+        @family-name: @font-family-name__fa,
+        @font-path: '@{baseDir}fonts/fa-brands-400',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+    .lib-font-face(
+        @family-name: @font-family-name__fa,
+        @font-path: '@{baseDir}fonts/fa-regular-400',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+    .lib-font-face(
+        @family-name: @font-family-name__fa,
+        @font-path: '@{baseDir}fonts/fa-solid-900',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    // h1 {
+    //     .lib-css(font-size, @h1__font-size-desktop);
+    //     .lib-css(margin-bottom, @h1__margin-bottom__desktop);
+    // }
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .items {
+        .lib-list-reset-styles();
+    }
+}

@@ -1,0 +1,120 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .tiles-item {
+        position: relative;
+        img {
+          width:100%;
+        }
+        .hollow-button.tiles-button {
+            display: block;
+            position: absolute;
+            font-size: unset;
+            transform: translate(50%, 0);
+            right: 50%;
+        }
+    }
+    .tiles >.widget.block.block-static-block, .tiles2 >.widget.block.block-static-block {
+        display: flex;
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .tiles {
+        >.widget.block.block-static-block, .tiles2 >.widget.block.block-static-block {
+            flex-wrap: wrap;
+            > .tiles-item {
+                img {
+                    object-fit: cover;
+                    height: 436px;
+                    object-position: top;
+                }
+                &:first-child a {
+                    padding: 16px 27px;
+                    bottom: 10.25%;
+                }
+                &:last-child {
+                    margin-top: -5px;
+                    a {
+                        padding: 16px 23px; 
+                        bottom: 10.55%;
+                    }
+                }
+            }
+        }
+    }
+    .tiles2 {
+        margin-top: 345px;
+        >.widget.block.block-static-block, .tiles2 >.widget.block.block-static-block {
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            > .tiles-item {
+                img {
+                    object-fit: cover;
+                }
+                &:first-child {
+                    margin-top: -6px;
+                    img {
+                        height: 563px;
+                    }
+                    a {
+                        padding: 16px 26px;
+                        bottom: 6.6%;
+                        letter-spacing: 1px;
+                    }
+                }
+                &:last-child {
+                    img {
+                        height: 572px;
+                    }
+                    a {
+                        padding: 16px 25px; 
+                        bottom: 6.55%;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .tiles >.widget.block.block-static-block, .tiles2 >.widget.block.block-static-block {
+        .tiles-item {
+            width: 50%;
+            img {
+              height: auto;
+            }
+            &:first-child a {
+                padding: 16px 24px;
+            }
+            &:last-child a {
+                padding: 16px 25px;
+            }
+        }
+    }
+    .tiles2 {
+        margin-top: 36.8%;
+    }
+
+    .tiles-item .hollow-button.tiles-button {
+        bottom: 5.15%;
+    }
+    .tiles2 >.widget.block.block-static-block {
+        .tiles-item {
+            &:first-child a {
+                padding: 16px 30px;
+            }
+        }
+    }
+}

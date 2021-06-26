@@ -1,0 +1,174 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .journal {
+        display: flex;
+        justify-content: center;
+        >.widget.block.block-static-block {
+            max-width: 1240px;
+        }
+
+        &__row1, &__row2 {
+            display: flex;
+        }
+        &-item {
+            &--title {
+                color: @color-carhartt;
+                font-weight: 600;
+                letter-spacing: .4px;
+            }
+            &--status {
+                font-family: @font-family__karla-medium;
+                text-transform: uppercase;
+            }
+        }
+        &__button {
+            text-align: center;
+        }
+        &-button {
+            font-size: @font-size-14;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .journal {
+        padding: 79px 16px;
+        text-align: center;
+        &__row1 {
+            flex-wrap: wrap;
+            margin-bottom: 41px;
+        }
+        &__row2 {
+            flex-direction: column;
+        }
+        &-item {
+            img {
+                width: 100%;
+            }
+            &--title, &--status {
+                display: block;
+                text-align: left;
+            }
+            &--title {
+                margin-top: 8px;
+                margin-bottom: -1px;
+            }
+            &.item-1, &.item-2, &.item-3, &.item-4, &.item-5 {
+                width: 100%;
+            }
+            &.item-2 {
+                padding: 30px 29px;
+            }
+            &.item-3 {
+                padding: 0px 29px;
+                margin-top: -1px;
+            }
+            &.item-4 p {
+                margin-top: 14px;
+            }
+            &.item-5 {
+                padding: 35px 0 45px;
+                img {
+                    max-width: 91.25%;
+                    float: right;
+                    margin-right: 6px;
+                }
+                p {
+                    clear: both;
+                    padding: 14px 24px 0;
+                }
+                span {
+                    padding: 0 24px;
+                }
+            }
+            &--image {
+                display: flex;
+                justify-content: space-between;
+                img {
+                    width: 47.95%;
+                }
+            }
+        }
+        &-button {
+            padding: 14px 27px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: @screen__l) {
+        .journal {
+            &__row1, &__row2 {
+                padding: 0 10px;
+            }
+            &-item--image img {
+                max-width: 45%;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .journal {
+        margin: 42px 0 65px;
+        >.widget.block.block-static-block {
+            margin-left: 16px;
+        }
+        &__row2 {
+            margin: 81px 0 61px;
+        }
+        &-item {
+            &--title {
+                margin: 8px 0 -1px;
+            }
+            &--status {
+                letter-spacing: -.5px;
+            }
+            &.item-1 {
+                width: 50%;
+                padding-top: 48px;  
+            }
+            &.item-2 {
+                width: 23.05%;
+                padding: 0 16px;
+            }
+            &.item-3 {
+                width: 23.05%;
+                padding: 48px 0px 0 16px;
+            }
+            &.item-4 {
+                width: 40%;
+                margin: 41px 9px 41px 10px;
+            }
+            &--image img:first-child {
+                margin-right: 13px;
+            }
+            &.item-5 {
+                width: 58%;
+            }
+
+        }
+        &-button {
+            padding: 14px 27px 13px;
+            margin-right: 16px;
+        }
+    }
+}

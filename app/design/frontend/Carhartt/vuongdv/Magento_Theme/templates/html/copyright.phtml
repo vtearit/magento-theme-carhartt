@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<small class="copyright">
+    <div class="copyright-inner">
+        <span><?= $block->escapeHtml("© 2019") ?></span>
+        <?php 
+            echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('carhartt-copyright')
+            ->toHtml()
+        ?>
+    </div>
+</small>
