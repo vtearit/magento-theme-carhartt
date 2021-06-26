@@ -215,8 +215,50 @@
     .block-search {
         margin-top: 7px;
         margin-right: 4px;
-        .label::before {
-            color: @color-white;
+        // .label::before {
+        //     color: @color-white;
+        // }
+        // .action.search {
+        //     background: unset;
+        //     border: unset;
+        //     span {
+        //         display: none;
+        //     }
+        //     &::before {
+        //         -webkit-font-smoothing: antialiased;
+        //         -moz-osx-font-smoothing: grayscale;
+        //         font-size: 22px;
+        //         line-height: 28px;
+        //         color: #fff;
+        //         content: '\e615';
+        //         font-family: 'luma-icons';
+        //         margin: 0 10px 0 0;
+        //         vertical-align: middle;
+        //         display: inline-block;
+        //         font-weight: normal;
+        //         overflow: hidden;
+        //         speak: none;
+        //         text-align: center;
+        //     }
+        // }
+        .control {
+            z-index: 99;
+            display: block;
+            position: absolute;
+            right: 16px;
+            top: 61px;
+            width: 100%;
+            padding: 35px 0px;
+            background: @color-white;
+            text-align: center;
+            #search {
+                .lib-input-placeholder(@color-search-placeholder);
+                border-radius: unset;
+                border: unset;
+                border-bottom: 1px solid @color-search-boder;
+                padding: 0;
+                width: 90%;
+            }
         }
     }
 }
