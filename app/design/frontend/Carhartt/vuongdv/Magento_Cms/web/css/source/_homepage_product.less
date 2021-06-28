@@ -1,0 +1,129 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .homepage-product {
+        text-align: center;
+        .block-title strong {
+            font-size: @font-size-16;
+            border-bottom: 1px solid @color-tshirt-boder;
+            padding: 4px 0;
+        }
+        .block-compare .block-title, .block-reorder .block-title, .block-wishlist .block-title, .widget .block-title {
+            margin: 0 0 35px;
+        }
+        .block-content .products-grid.grid {
+            .product-item {
+                // width: 25%;
+            }
+        }
+        .product-item-info {
+            position: relative;
+            // display: flex;
+            // justify-content: center;
+        }
+        .product-item-details {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background: @color-black;
+            opacity: 0.6;
+            // width: 378px;
+            //  Item name
+            .product-item-name {
+                position: absolute;
+                top: 44.5%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                a {
+                    color: @color-white;
+                }
+            }
+
+            .price-box.price-final_price, .swatch-attribute.color_text, .swatch-attribute.size {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            //  Item price
+            .normal-price, .price-label {
+                color: @color-white;
+            }
+            .price-box.price-final_price {
+                top: 51.7%;
+            }
+
+            // Item attributes
+            //  Color attributes
+            .swatch-attribute-options.clearfix {
+                display: flex;
+                justify-content: center;
+                .swatch-option.text{
+                    background: unset;
+                    border: unset;
+                    color: @color-white;
+                }
+            }
+            .swatch-option:not(.disabled):hover {
+                outline: unset;
+            }
+        
+            .swatch-attribute.color_text {
+                top: 49.9%;
+            }
+
+            .swatch-attribute.color_text .swatch-option.text {
+                padding: 0;
+                margin: 0;
+                text-transform: capitalize;
+                &:first-child::after {
+                    content: "/";
+                    margin: 0 4px;
+                }
+            }
+
+            //  Size attributes
+            .swatch-attribute.size {
+                bottom: -3.375%;
+                &::before {
+                    content: "Size in stock";
+                    position: absolute;
+                    top: -17%;
+                    left: 50%;
+                    transform: translateX(-51%);
+                    font-size: @font-size-13;
+                    color: @color-white;
+                }
+            }
+        }
+
+        .products-grid .product-item-info:hover, .products-grid .product-item-info.active {
+            box-shadow: unset;
+            border: unset;
+            margin: 0;
+            padding: 0;
+        }
+        .products-grid .product-item-info:hover .product-item-inner, .products-grid .product-item-info.active .product-item-inner {
+            display: none;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+}
