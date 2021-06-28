@@ -17,8 +17,8 @@
         }
         .product-item-info {
             position: relative;
-            // display: flex;
-            // justify-content: center;
+            display: flex;
+            justify-content: center;
         }
         .product-item-details {
             width: 100%;
@@ -194,18 +194,6 @@
                         margin-right: 0;
                     }
                 }
-            }
-        }
-    }
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__1600) {
-    .homepage-product {
-        .product-item-info {
-            display: flex;
-            justify-content: center;
-            .product-item-details {
-                width: 378px;
             }
         }
     }

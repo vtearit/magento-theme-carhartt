@@ -203,6 +203,7 @@
 
         .nav-sections {
             @_shadow: 0 0 5px 0 rgba(50, 50, 50, .75);
+            background: @color-white;
 
             .lib-css(box-shadow, @_shadow, 1);
             left: 0;
@@ -244,6 +245,14 @@
         padding-top: 24px;
         text-align: center;
         width: 33.33%;
+
+        a {
+            color: @color-text-menu-mobile;
+            text-transform: uppercase;
+            &:hover {
+                color: @color-text-menu-mobile + #333;
+            }
+        }
 
         &.active {
             background: transparent;

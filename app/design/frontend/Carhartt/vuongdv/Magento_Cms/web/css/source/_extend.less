@@ -8,8 +8,11 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
-    body.cms-index-index .page-wrapper #maincontent {
+    body.cms-index-index .page-wrapper #maincontent, body.cms-index-index .page-main {
         max-width: 100%;
         padding: 0;
+    }
+    .page-wrapper {
+        min-height: unset;
     }
 }
