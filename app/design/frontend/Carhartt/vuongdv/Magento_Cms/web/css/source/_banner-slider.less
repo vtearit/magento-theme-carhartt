@@ -99,6 +99,9 @@
         .banner-item.banner-slider .banner-content {
             width: 60%;
         }
+        .banner-arrow-down a::after {
+            font-size: @font-size-26;
+        }
     }
 }
 
@@ -107,8 +110,29 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    html {
+        scroll-behavior: smooth;
+    }
     .banner-slider-mobile {
         display: none;
+    }
+    .banner-slider-desktop {
+        position: relative;
+        .banner-arrow-down {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 8%;
+            z-index: 1;
+            a:hover {
+                &::after {
+                    color: @color-white - #222;
+                }
+            }
+            a:active {
+                text-decoration: none;
+            }
+        }
     }
     .banner-item.banner-slider {
         .banner {

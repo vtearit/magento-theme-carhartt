@@ -10,19 +10,11 @@
             border-bottom: 1px solid @color-tshirt-boder;
             padding: 4px 0;
         }
-        .block-content .products-grid.grid {
-            .product-item {
-                // width: 25%;
-            }
-        }
         .product-item-info {
             position: relative;
-            // display: flex;
-            // justify-content: center;
         }
         .product-item-details {
             width: 100%;
-            // width: 378px;
 
             //  Item name
             .product-item-name {
@@ -132,13 +124,20 @@
             margin: 0 0 35px;
         }
         .product-item-info {
+            &:hover .product-item-details {
+                cursor: pointer;
+                visibility: visible;
+                .fadeIn(1s);
+            }
             .product-item-details {
+                visibility: hidden;
                 position: absolute;
                 z-index: 1;
                 height: 100%;
                 top: 0;
                 background: @color-black;
                 opacity: 0.6;
+
                 //  Item name
                 .product-item-name {
                     position: absolute;

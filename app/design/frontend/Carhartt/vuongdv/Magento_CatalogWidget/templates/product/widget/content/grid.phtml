@@ -116,7 +116,7 @@ use Magento\Framework\App\Action\Action;
         $(".product-item-details").hide();
         $(document).ready(function(){
             $('.product-item-info').mouseenter(function() {
-                $('.product-item-details').show();  
+                $('.product-item-details').toggle('slow');  
             }).mouseleave(function() {      
                 if(!$('.product-item-details').hasClass('active')){
                     $('.product-item-details').hide();

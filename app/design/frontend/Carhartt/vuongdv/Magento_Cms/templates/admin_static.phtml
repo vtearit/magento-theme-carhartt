@@ -76,6 +76,7 @@
 // Page
 <div class="banner-slider-desktop">
 {{widget type="Mageplaza\BannerSlider\Block\Widget" slider_id="1"}}
+<div class="banner-arrow-down"><a href="#tiles" class="icon-down"></a></div>
 </div>
 <div class="banner-slider-mobile">
 {{widget type="Mageplaza\BannerSlider\Block\Widget" slider_id="2"}}
@@ -83,11 +84,14 @@
 <div class="message">
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="19"}}
 </div>
-<div class="tiles">
+<div class="tiles" id="tiles">
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="20"}}
 </div>
 <div class="journal">
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="21"}}
+</div>
+<div class="homepage-product">
+{{widget type="Magento\CatalogWidget\Block\Product\ProductsList" title="T-Shirts" show_pager="0" products_count="4" template="Magento_CatalogWidget::product/widget/content/grid.phtml" cache_lifetime="86400" conditions_encoded="^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^]^]"}}
 </div>
 <div class="tiles2">
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="22"}}

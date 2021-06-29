@@ -7,14 +7,10 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!-- <move element="form.subscribe" destination="footer.top.content.cms" after="-" /> -->
         <referenceContainer name="page.wrapper">
             <!-- <block class="Magento\Framework\View\Element\Template" name="banner_top" template="Magento_Cms::banner.phtml" before="main.content"/> -->
             <referenceContainer name="content">
-                <!-- <block class="Magento\Framework\View\Element\Template" name="tile" template="Magento_Cms::style_guide.phtml"/> -->
-                <!-- <block class="Magento\Framework\View\Element\Template" name="superfood" template="Magento_Cms::superfood.phtml" after="tile" />
-                <block class="Magento\Framework\View\Element\Template" name="best_seller" template="Magento_Cms::best_seller.phtml" after="superfood" />
-                <block class="Magento\Framework\View\Element\Template" name="shop_instagram" template="Magento_Cms::shop_instagram.phtml" after="best_seller" /> -->
+                <!-- <block class="Magento\Framework\View\Element\Template" name="tile" template="Magento_Cms::homepage.phtml"/> -->
             </referenceContainer>
         </referenceContainer>
     </body>

@@ -1,0 +1,31 @@
+<div class="banner-slider-desktop">
+<?= $block->getLayout()->createBlock('Mageplaza\BannerSlider\Block\Widget')->setSliderId(1)->toHtml();?>
+<div class="banner-arrow-down"><a href="#tiles" class="icon-down"></a></div>
+</div>
+<div class="banner-slider-mobile">
+<?= $block->getLayout()->createBlock('Mageplaza\BannerSlider\Block\Widget')->setSliderId(2)->toHtml();?>
+</div>
+<div class="message">
+<div class="widget block block-static-block">
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('carhartt-message')->toHtml() ?>
+</div>
+</div>
+<div class="tiles" id="tiles">
+<div class="widget block block-static-block">
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('carhartt-tiles')->toHtml() ?>
+</div>
+</div>
+<div class="journal">
+<div class="widget block block-static-block">
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('carhartt-journal')->toHtml() ?>
+</div>
+</div>
+<div class="tiles2">
+<div class="widget block block-static-block">
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('carhartt-tiles2')->toHtml() ?>
+</div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery'], function($){
+</script>

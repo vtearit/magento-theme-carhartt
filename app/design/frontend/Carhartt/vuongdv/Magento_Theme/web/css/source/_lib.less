@@ -47,3 +47,41 @@
     -moz-animation: itemRotate @_time linear 0s infinite;
     -o-animation: itemRotate @_time linear 0s infinite;
 }
+
+/* FadeIn Animation */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.6; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.6; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.6; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.6; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.6; }
+}
+
+.fadeIn(@_time : @time) {
+    -webkit-animation: fadein @_time; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein @_time; /* Firefox < 16 */
+    -ms-animation: fadein @_time; /* Internet Explorer */
+    -o-animation: fadein @_time; /* Opera < 12.1 */
+    animation: fadein @_time;
+}
