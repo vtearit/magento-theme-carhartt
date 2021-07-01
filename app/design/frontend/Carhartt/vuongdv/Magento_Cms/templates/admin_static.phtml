@@ -91,7 +91,7 @@
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="21"}}
 </div>
 <div class="homepage-product">
-{{widget type="Magento\CatalogWidget\Block\Product\ProductsList" title="T-Shirts" show_pager="0" products_count="4" template="Magento_CatalogWidget::product/widget/content/grid.phtml" cache_lifetime="86400" conditions_encoded="^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^]^]"}}
+{{widget type="Magento\CatalogWidget\Block\Product\ProductsList" title="T-Shirts" show_pager="0" products_count="4" template="Magento_CatalogWidget::product/widget/content/grid.phtml" cache_lifetime="86400" conditions_encoded="^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^],`1--1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Product`,`attribute`:`category_ids`,`operator`:`==`,`value`:`53`^]^]"}}
 </div>
 <div class="tiles2">
 {{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="22"}}
@@ -107,5 +107,20 @@
 <div class="banner-button">
 <a class="hollow-button item" href="#">Shop Now</a>
 <a class="hollow-button item" href="#">Learn More</a>
+</div>
+</div>
+
+// Category Banner
+<div class="category-banner">
+<img src="{{media url=&quot;wysiwyg/category_banner.jpg&quot;}}" alt="" />
+<div class="category-banner__text">
+<div class="para1">
+<div class="title">CARHARTT WIP T-SHIRTS</div>
+<div class="content">Carhartt WIP t-shirts provide a blend of simplicity and stellar graphics, which reflect the brand’s rooting in music, skateboarding and art. A humble cotton canvas for ideas, references are subtly woven into each t-shirt collection, reflective of both the brand’s workwear and subcultural history.</div>
+</div>
+<div class="para2">
+<div class="title">CARHARTT WIP F/W19 - T-SHIRTS</div>
+<div class="content">Created to last, our selection of longsleeve and short sleeve tees, are typically crafted from a midweight cotton jersey. As well as an array of t-shirts with seasonal motifs, Fall/Winter 19 has a selection of more muted options, including marl fabrics and pocket detailing. As ever, our Chase T-shirt provides a reliable seasonal basic.</div>
+</div>
 </div>
 </div>

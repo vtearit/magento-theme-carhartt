@@ -1,0 +1,65 @@
+<?php echo $block->getLayout()
+->createBlock('Magento\Cms\Block\Block')
+->setBlockId('carhartt-category_banner')
+->toHtml() ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul id="menu" data-mage-init='{"menu":{"responsive":true, "expanded":true, "delay": 200, "position":{"my":"left top","at":"left+10 top+30"}}}'>
+        <li class="level0 level-top ui-menu-item">Toys</li>
+        <li class="level0 level-top parent ui-menu-item">Electronics
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all">
+                <li class="ui-menu-item"><a href="#">Home Entertainment</a></li>
+                <li class="ui-menu-item"><a href="#">Routers</a></li>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">Music
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all">
+                <li class="ui-menu-item">
+                    <a href="#">Alternative</a>
+                </li>
+                <li class="ui-menu-item">
+                    <a href="#">Classic</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div data-mage-init='{
+    "collapsible":{
+        "collapsible": true,
+        "openedState": "active",
+        "active": true
+    }}'>
+    <div data-role="title">
+        <h4>Fruit</h4>
+    </div>
+    <div data-role="content">
+        <ul>
+            <li>Orange</li>
+            <li>Apple</li>
+            <li>Banana</li>
+        </ul>
+    </div>
+</div>
+<div data-mage-init='{
+    "collapsible":{
+        "animate":{ "duration" :1000, "easing":"easeOutCubic"}
+    }}'>
+    <div data-role="title">
+        <h4>Exams</h4>
+    </div>
+    <div data-role="content">
+        <ul style="display: none;">
+            <li>Maths</li>
+            <li>English</li>
+            <li>Science</li>
+        </ul>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+    require(['jquery'], function($){
+        $(document).ready( function() {
+            $(".test").collapsible({ disabled: true});
+    });
+</script> -->

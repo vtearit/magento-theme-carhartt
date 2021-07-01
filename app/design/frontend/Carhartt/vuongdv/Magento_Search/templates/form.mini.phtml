@@ -24,7 +24,7 @@ $configProvider = $block->getData('configProvider');
                         <label class="label" for="search" data-role="minisearch-label">
                             <span><?= $block->escapeHtml(__('Search')) ?></span>
                         </label>
-                        <div class="control" id="custom-search">
+                        <div class="control" id="custom-search" style="display: none;">
                             <input id="search"
                                     <?php if ($configProvider->isSuggestionsAllowed()):?>
                                     data-mage-init='{"quickSearch":{
@@ -64,7 +64,7 @@ $configProvider = $block->getData('configProvider');
 
 <script type="text/javascript">
     require(['jquery'], function($){
-            $('#custom-search').hide();
+            // $('#custom-search').hide();
             $(document).ready( function() {
             $('.label').click(function(){
                 $('#custom-search').toggle('slow');
