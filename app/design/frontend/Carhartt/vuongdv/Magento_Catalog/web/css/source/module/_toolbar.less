@@ -30,19 +30,25 @@
 
     .toolbar {
         &:extend(.abs-add-clearfix all);
-        margin-bottom: @indent__l;
         text-align: center;
 
         select {
-            .lib-css(background-color, @toolbar-element-background);
-            .lib-css(box-shadow, @button__shadow);
-            border-radius: 3px;
+            border: unset;
+            cursor: pointer;
         }
         .sorter-action {
             position: relative;
             top: -2px;
         }
+        &-sorter.sorter {
+            position: relative;
+            .sorter-option {
+                position: absolute;
+                right: 0px;
+            }
+        }
         &-amount {
+            display: none;
             left: 0;
             line-height: @toolbar-mode-icon-font-size + 2;
             margin: 0;
@@ -83,9 +89,6 @@
         float: right;
 
         .page-products & {
-            position: absolute;
-            right: 0;
-            top: 0;
             z-index: 1;
         }
 
@@ -119,7 +122,8 @@
 
     .limiter {
         &-options {
-            margin: 0 5px 0 7px;
+            margin: 0 0 0 -10px;
+            padding: 0 18px 0 12px;
             width: auto;
         }
 
@@ -127,7 +131,11 @@
             font-weight: 400;
         }
 
-        .page-products .toolbar & {
+        // .page-products .toolbar & {
+        //     display: none;
+        // }
+
+        &-text {
             display: none;
         }
 
@@ -157,7 +165,7 @@
     }
 
     .toolbar-amount {
-        display: block;
+        // display: block;
         float: left;
         position: static;
     }
@@ -170,9 +178,14 @@
     }
 
     .modes {
+        position: absolute;
         display: inline-block;
         float: left;
-        margin-right: @indent__base;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        top: 700%;
+        z-index: 99;
 
         .products.wrapper ~ .toolbar & {
             display: none;
@@ -224,11 +237,9 @@
         );
     }
 
-    .sorter {
-        .page-products & {
-            position: static;
-        }
-    }
+    // .sorter-label {
+    //     padding-right: 11px;
+    // }
 
     .mode-list {
         &:before {

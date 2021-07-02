@@ -21,7 +21,7 @@ $configProvider = $block->getData('configProvider');
                 <form class="form minisearch" id="search_mini_form"
                     action="<?= $block->escapeUrl($helper->getResultUrl()) ?>" method="get">
                     <div class="field search">
-                        <label class="label" for="search" data-role="minisearch-label">
+                        <label class="label" id="search-btn" for="search" data-role="minisearch-label">
                             <span><?= $block->escapeHtml(__('Search')) ?></span>
                         </label>
                         <div class="control" id="custom-search" style="display: none;">
@@ -66,7 +66,7 @@ $configProvider = $block->getData('configProvider');
     require(['jquery'], function($){
             // $('#custom-search').hide();
             $(document).ready( function() {
-            $('.label').click(function(){
+            $('#search-btn').click(function(){
                 $('#custom-search').toggle('slow');
             });
         });

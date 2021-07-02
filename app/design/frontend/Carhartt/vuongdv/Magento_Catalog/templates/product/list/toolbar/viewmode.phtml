@@ -12,10 +12,9 @@
  */
 ?>
 <?php if ($block->isEnabledViewSwitcher()) :?>
-    <div class="modes" style="display: flex">
+    <div class="modes">
         <?php $_modes = $block->getModes(); ?>
         <?php if ($_modes && count($_modes) > 1) :?>
-            <strong class="modes-label" id="modes-label"><?= $block->escapeHtml(__('View as')) ?></strong>
             <div class="mode-custom">
                 <?php foreach ($block->getModes() as $_code => $_label) :?>
                     <?php if ($block->isModeActive($_code)) :?>

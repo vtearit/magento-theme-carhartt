@@ -63,6 +63,16 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
+
+    //  For custom category page
+    #maincontent {
+        max-width: unset;
+    }
+    .page.messages, .category-view {
+        display: none;
+    }
+    //
+
     .search-cart-custom {
         display: flex;
         align-items: center
@@ -609,8 +619,11 @@
 
     .page-main {
         > .page-title-wrapper {
+            text-align: center;
             .page-title {
                 display: inline-block;
+                padding: 18px 0 29px;
+                margin: 0 32px 0 0;
             }
 
             .page-title + .action {
