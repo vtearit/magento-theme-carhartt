@@ -1,0 +1,35 @@
+<div class="submenu">
+<?php
+    /** @var \Vtearit\SubMenu\Block\Template $block */
+    $myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Vtearit\SubMenu\Block\CountryName');
+    
+    // print current category data
+    $currentCategory = $myBlock->getCurrentCategory();  
+    $categoryId = $currentCategory->getId();
+ 
+    $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
+
+    $categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
+
+    // Load category by category ID
+    $category = $categoryFactory->create()->load($categoryId);
+    // Get comma-separated children category ids
+    $childrenCategoryIds = $category->getChildren($categoryId);
+
+    //Get all children category ids as an array
+    $allChildrenCategoryIdsArr = $category->getAllChildren(true);
+    // echo $allChildrenCategoryIdsArr[0];
+    // // die;
+    foreach($allChildrenCategoryIdsArr as $value) {
+        // echo $value;
+        if ($value === $allChildrenCategoryIdsArr[0]) {
+            echo 'all';
+        } else {
+            $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $category = $_objectManager->create('Magento\Catalog\Model\Category')
+            ->load($value);
+            echo $category->getName() . '<br/>';
+        }
+    }
+?>
+</div>

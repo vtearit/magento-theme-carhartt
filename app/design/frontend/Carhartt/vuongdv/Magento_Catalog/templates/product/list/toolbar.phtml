@@ -28,8 +28,11 @@
 
         <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
 
+        <?php include ($block->getTemplateFile('Vtearit_SubMenu::submenu.phtml')) ?>
+
         <?php if ($block->isExpanded()) :?>
             <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
-        <?php endif; ?>    
+        <?php endif; ?> 
+
     </div>
 <?php endif ?>

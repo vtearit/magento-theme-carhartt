@@ -337,6 +337,7 @@ return [
         'Vertex_AddressValidationApi' => 1,
         'Vertex_AddressValidation' => 1,
         'Vtearit_ProductSort' => 1,
+        'Vtearit_SubMenu' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];
