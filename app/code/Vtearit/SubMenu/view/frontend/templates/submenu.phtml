@@ -1,35 +1,43 @@
 <div class="submenu">
 <?php
     /** @var \Vtearit\SubMenu\Block\Template $block */
-    $myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Vtearit\SubMenu\Block\CountryName');
-    
-    // print current category data
+    $myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Vtearit\SubMenu\Block\Category');
+
+    // Print current category data
     $currentCategory = $myBlock->getCurrentCategory();  
     $categoryId = $currentCategory->getId();
- 
     $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
-
     $categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
 
     // Load category by category ID
     $category = $categoryFactory->create()->load($categoryId);
     // Get comma-separated children category ids
     $childrenCategoryIds = $category->getChildren($categoryId);
-
-    //Get all children category ids as an array
-    $allChildrenCategoryIdsArr = $category->getAllChildren(true);
-    // echo $allChildrenCategoryIdsArr[0];
-    // // die;
-    foreach($allChildrenCategoryIdsArr as $value) {
-        // echo $value;
-        if ($value === $allChildrenCategoryIdsArr[0]) {
-            echo 'all';
-        } else {
-            $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            $category = $_objectManager->create('Magento\Catalog\Model\Category')
-            ->load($value);
-            echo $category->getName() . '<br/>';
-        }
-    }
 ?>
+    <ul class="submenu-inner">
+    <?php
+        //Get all children category ids as an array
+        $allSubCategory = $category->getAllChildren(true);
+        foreach($allSubCategory as $value) {
+            if ($value === $allSubCategory[0]) { ?>
+            <li>
+                <a href="<?php echo $currentCategory->getUrl(); ?>">
+                    <?php echo 'All'; ?>
+                </a>
+            </li>
+            <?php
+            } else {
+                $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                $subCategory = $_objectManager->create('Magento\Catalog\Model\Category')
+                ->load($value); ?>
+                <li>
+                    <a href="<?php echo $subCategory->getUrl(); ?>">
+                        <?php echo $subCategory->getName(); ?>
+                    </a>
+                </li>
+                <?php
+            }
+        }
+    ?>
+    </ul>
 </div>

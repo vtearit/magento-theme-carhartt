@@ -4,10 +4,82 @@
 
 & when (@media-common = true) {
     .toolbar > .field.limiter > .label > span, .toolbar-sorter.sorter .sorter-label,
-    .block.filter .filter-button {
+    .block.filter .filter-button, .toolbar > .submenu > .submenu-inner > li > a {
+        color: @color-text-menu-mobile;
         font-size: @font-size-12;
         font-family: @font-family__karla-bold;
         text-transform: uppercase;
+    }
+
+    .products.wrapper ~ .toolbar, .products.wrapper ~ .toolbar .pages {
+        width: 97.3%;
+    }
+
+    .toolbar {
+        .submenu {
+            &-inner {
+                display: flex;
+                align-items: center;
+                margin: 0 0 0 58px;
+                padding: 0;
+                li {
+                    display: inline-block;
+                    margin: 0;    
+                    letter-spacing: .05px;
+                    padding: 0 12px;
+                    a {
+                        &:hover, &:visited {
+                            color: @color-search-boder;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .product-items {
+        .swatch-custom {
+            position: absolute;
+            top: 35px;
+            transform: translateX(-2px);
+            width: 100%;
+            .swatch-attribute {
+                &.color_text .swatch-attribute-options, &.size .swatch-attribute-options {
+                    display: flex;
+                    justify-content: center;
+                }
+                &.size {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+    .category-banner {
+        margin-top: 17px;
+        position: relative;
+        width: 100%;
+        img {
+            width: 100%;
+        }
+        &__text {
+            position: absolute;
+            top: 14%;
+            width: 30.75%;
+            left: 12%;
+            transform: translate(-1px, 10px);
+            .para1 {
+                margin-bottom: 32px;
+            }
+            span {
+                font-family: @font-family-name__karla-bold;
+                font-size: @font-size-13;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            h4 {
+                margin: 2px 0;
+                letter-spacing: 0.035px;
+            }
+        }
     }
 }
 
@@ -32,4 +104,71 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product-items {
+        .swatch-custom {
+            .swatch-attribute {
+                &.size {
+                    position: absolute;
+                    left: 2px;
+                    top: -270px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .product-item-info {
+        .products-grid & {
+            &:hover .product-item-details,
+            &.active .product-item-details {
+                background: @color-black;
+                cursor: pointer;
+                opacity: 0.6;
+                .fadeIn(1s);
+            }
+            &:hover .product-item-details > .product-item-custom {
+                background: unset;
+                opacity: 1;
+            }
+            &:hover  .swatch-attribute.size {
+                visibility: visible;
+            }
+        }
+    }
+
+    //  When click button show/hide
+    .products.wrapper .product-item.active {
+        margin-bottom: -1px;
+        .product-item {
+            &-custom {
+                bottom: 43.5%;
+                visibility: hidden;
+                .price-box, .price-label, .swatch-custom .swatch-attribute.color_text .swatch-option.text {
+                    color: @color-white;
+                }
+                .swatch-custom .swatch-attribute.size {
+                    left: 2px;
+                    top: 142px;
+                }
+            }
+            &-name a {
+                color: @color-white;
+            }
+        }
+        .product-item-info {
+            &:hover .product-item-custom,
+            &.active .product-item-custom {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__1700) {
+    .product {
+        &-item {
+            &-details {
+                width: 378px;
+            }
+        }
+    }
 }

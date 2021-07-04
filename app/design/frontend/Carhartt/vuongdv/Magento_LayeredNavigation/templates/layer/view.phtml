@@ -65,12 +65,14 @@
                     timesClicked++;
                     if (timesClicked%2==0) {
                         $('#filter-content').hide();
+                        $('.submenu').show();
                         $(".breadcrumbs").css("display", "block");
                         $(".page-title").css("display", "block");
                         $(".page-title-wrapper").css("display", "block");
                         $(".filter-button").css("marginTop", "0");
                     } else {
                         $('#filter-content').show();
+                        $('.submenu').hide();
                         $(".breadcrumbs").css("display", "none");
                         $(".page-title").css("display", "none");
                         $(".page-title-wrapper").css("display", "none");
@@ -81,9 +83,9 @@
             // $('.sorter-label').click(function(){
             //     $('#sorter').toggle('slow');
             // });
-            $( "h5" ).click(function() {
-                $( "h5" ).toggle();
-            });
+            // $( ".show-hide-button" ).click(function() {
+            //     $( ".show-hide-button" ).toggle();
+            // });
         });
     });
 </script>

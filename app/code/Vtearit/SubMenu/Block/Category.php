@@ -1,7 +1,7 @@
 <?php
 namespace Vtearit\SubMenu\Block;
 
-class CountryName extends \Magento\Framework\View\Element\Template
+class Category extends \Magento\Framework\View\Element\Template
 {
     protected $_registry;
     protected $_categoryFactory;
