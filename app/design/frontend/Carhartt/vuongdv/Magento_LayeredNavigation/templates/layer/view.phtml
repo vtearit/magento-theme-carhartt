@@ -56,36 +56,35 @@
 <?php endif; ?>
 <script type="text/javascript">
     require(['jquery'], function($){
-            $(document).ready( function() {
-            // $('.filter-button').click(function(){
-            //     $('#filter-content').toggle('slow');
-            // });
-                var timesClicked = 0;
-                $(".filter-button").click(function() {
-                    timesClicked++;
-                    if (timesClicked%2==0) {
-                        $('#filter-content').hide();
-                        $('.submenu').show();
-                        $(".breadcrumbs").css("display", "block");
-                        $(".page-title").css("display", "block");
-                        $(".page-title-wrapper").css("display", "block");
-                        $(".filter-button").css("marginTop", "0");
-                    } else {
-                        $('#filter-content').show();
-                        $('.submenu').hide();
-                        $(".breadcrumbs").css("display", "none");
-                        $(".page-title").css("display", "none");
-                        $(".page-title-wrapper").css("display", "none");
-                        $(".filter-button").css("marginTop", "-11px");
-                    }
-                });
-
-            // $('.sorter-label').click(function(){
-            //     $('#sorter').toggle('slow');
-            // });
-            // $( ".show-hide-button" ).click(function() {
-            //     $( ".show-hide-button" ).toggle();
-            // });
+        $(document).ready( function() {
+            var timesClicked = 0;
+            $(".filter-button").click(function() {
+                timesClicked++;
+                if (timesClicked%2==0) {
+                    $('#filter-content').hide();
+                    $('.submenu').show();
+                    $(".breadcrumbs").css("display", "block");
+                    $(".page-title").css("display", "block");
+                    $(".page-title-wrapper").css("display", "block");
+                    $(".filter-button").css("marginTop", "0");
+                    $(".filter-button").css("marginBottom", "0");
+                    $(".toolbar-products").css("paddingTop", "0");
+                    $("#modes").css("top", "279px");
+                } else {
+                    $('#filter-content').show();
+                    $('.submenu').hide();
+                    $(".breadcrumbs").css("display", "none");
+                    $(".page-title").css("display", "none");
+                    $(".page-title-wrapper").css("display", "none");
+                    $(".filter-button").css("marginTop", "-2px");
+                    $(".filter-button").css("marginBottom", "15px");
+                    $(".toolbar-products").css("paddingTop", "8px");
+                    $("#modes").css("top", "495px");
+                }
+            });
+            $('.sorter-label').click(function(){
+                $('#sorter').toggle('slow');
+            });
         });
     });
 </script>
