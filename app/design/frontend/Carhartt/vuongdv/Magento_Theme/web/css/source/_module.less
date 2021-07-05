@@ -70,7 +70,7 @@
         padding: 0;
     }
 
-    .block.filter, .toolbar-products, .products.wrapper.grid.products-grid {
+    .toolbar-products, .products.wrapper.grid.products-grid {
         padding: 0 20px;
     }
     .page.messages, .category-view {
@@ -186,6 +186,10 @@
 
     .page-main {
         > .page-title-wrapper {
+            text-align: center;
+            .page-title {
+                display: inline-block;
+            }
             .page-title + .action {
                 margin-top: @indent__l;
             }
@@ -523,66 +527,14 @@
         padding: 29px 0;
         .lib-css(background-color, @color-social-border);
     }
-}
 
-//
-//  Tablet
-//  _____________________________________________
-
-& when (@media-target = 'desktop'), (@media-target = 'all') {
-    @media only screen and (min-width: @screen__m) and (max-width: @screen__xl) {
-        .header.content {
-            flex-wrap: wrap;
-            padding: 20px 0 0;
-            .logo {
-                order: 1;
-                padding-left: 10px;
-                width: 24%;
-            }
-            .nav-sections {
-                order: 3;
-                width: 100%;
-                opacity: 0.9;
-                background: @color-black_dark;
-                margin: 15px 0 0;
-                position: relative;
-                padding: 0 20px;
-                left: -20px;
-                .navigation {
-                    margin: 0;
-                }
-            }
-            .header-right {
-                order: 2;
-                padding-right: 10px;
-                display: flex;
-                justify-content: flex-end;
-                width: 73%;
-                .block-search {
-                    .label, .action.search {
-                        margin-top: 1;
-                    }
-                    .control {
-                        margin-top: -3px;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
-    .header.content {
-        padding: 6.5px 31px 6.5px 32px;
-        .logo {
-            order: 1;
-        }
-        .nav-sections {
-            order: 2;
-            margin: 0 10.1% 0 auto;
-        }
-        .header-right {
-            order: 3;
+    .page-main > .page-title-wrapper {
+        border-bottom: 1px solid @color-search-boder;
+        padding: 20px 0;
+        .page-title {
+            font-size: @font-size-16;
+            line-height: @line-height-16;
+            margin: 0;
         }
     }
 }
@@ -624,11 +576,8 @@
 
     .page-main {
         > .page-title-wrapper {
-            text-align: center;
             .page-title {
-                display: inline-block;
-                padding: 18px 0 30px;
-                margin: 0 32px 0 0;
+                margin: 0;
             }
 
             .page-title + .action {
@@ -895,6 +844,79 @@
         padding: 14px 0 30px;
         &-inner {
             margin-left: 3px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: @screen__xl) {
+        .header.content {
+            flex-wrap: wrap;
+            padding: 20px 0 0;
+            .logo {
+                order: 1;
+                padding-left: 10px;
+                width: 24%;
+            }
+            .nav-sections {
+                order: 3;
+                width: 100%;
+                opacity: 0.9;
+                background: @color-black_dark;
+                margin: 15px 0 0;
+                position: relative;
+                padding: 0 20px;
+                left: -20px;
+                .navigation {
+                    margin: 0;
+                }
+            }
+            .header-right {
+                order: 2;
+                padding-right: 10px;
+                display: flex;
+                justify-content: flex-end;
+                width: 73%;
+                .block-search {
+                    .label, .action.search {
+                        margin-top: 1;
+                    }
+                    .control {
+                        margin-top: -3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-main {
+        > .page-title-wrapper {
+            .page-title {
+                padding: 18px 0 30px;
+                margin: 0 32px 0 0;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .header.content {
+        padding: 6.5px 31px 6.5px 32px;
+        .logo {
+            order: 1;
+        }
+        .nav-sections {
+            order: 2;
+            margin: 0 10.1% 0 auto;
+        }
+        .header-right {
+            order: 3;
         }
     }
 }

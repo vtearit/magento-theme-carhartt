@@ -17,7 +17,7 @@
         <span class="filter-button" style="cursor: pointer;">Filter</span>
     </div>
         <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
-        <div class="block-content filter-content" id="filter-content" style="display: none;">
+        <div class="block-content filter-content" id="filter-content">
             <?= $block->getChildHtml('state') ?>
 
             <?php if ($block->getLayer()->getState()->getFilters()) : ?>
@@ -61,30 +61,32 @@
             $(".filter-button").click(function() {
                 timesClicked++;
                 if (timesClicked%2==0) {
-                    $('#filter-content').hide();
-                    $('.submenu').show();
-                    $(".breadcrumbs").css("display", "block");
+                    // $('#filter-content').hide();
+                    $('.submenu').removeClass("active");
+                    $(".breadcrumbs").removeClass("active");
                     $(".page-title").css("display", "block");
                     $(".page-title-wrapper").css("display", "block");
-                    $(".filter-button").css("marginTop", "0");
-                    $(".filter-button").css("marginBottom", "0");
+                    $("#layered-filter-block").removeClass("active");
+                    // $(".filter-button").css("marginTop", "0");
+                    // $(".filter-button").css("marginBottom", "0");
                     $(".toolbar-products").css("paddingTop", "0");
                     $("#modes").css("top", "279px");
                 } else {
-                    $('#filter-content').show();
-                    $('.submenu').hide();
-                    $(".breadcrumbs").css("display", "none");
+                    // $('#filter-content').show();
+                    $('.submenu').addClass("active");
+                    $(".breadcrumbs").addClass("active");
                     $(".page-title").css("display", "none");
                     $(".page-title-wrapper").css("display", "none");
-                    $(".filter-button").css("marginTop", "-2px");
-                    $(".filter-button").css("marginBottom", "15px");
+                    $("#layered-filter-block").addClass("active");
+                    // $(".filter-button").css("marginTop", "-2px");
+                    // $(".filter-button").css("marginBottom", "15px");
                     $(".toolbar-products").css("paddingTop", "8px");
                     $("#modes").css("top", "495px");
                 }
             });
-            $('.sorter-label').click(function(){
-                $('#sorter').toggle('slow');
-            });
+            // $('.sorter-label').click(function(){
+            //     $('#sorter').toggle('slow');
+            // });
         });
     });
 </script>

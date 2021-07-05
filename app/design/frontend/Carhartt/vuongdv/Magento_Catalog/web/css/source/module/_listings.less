@@ -28,13 +28,16 @@
 
 & when (@media-common = true) {
     //  Product Lists
-    .products {
-        margin: @indent__l 0 0;
-    }
-
     .products-grid .product-item-info:hover .product-item-inner, .products-grid .product-item-info.active .product-item-inner,
     .product-item-inner {
         display: none;
+    }
+
+    .page-products {
+        .columns {
+            position: relative;
+            z-index: 1;
+        }
     }
 
     .products.wrapper.grid.products-grid .product.details.product-item-details {
@@ -72,7 +75,6 @@
             }
 
             &-custom {
-                bottom: -18.15%;
                 position: absolute;
                 width: 100%;
             }
@@ -302,11 +304,26 @@
             &:extend(.abs-reset-image-wrapper all);
         }
     }
+
+    .products.wrapper.grid.products-grid {
+        .products.list.items.product-items {
+            text-align: center;
+        }
+    }
 }
 
 //
 //  Mobile
 //  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__375) {
+    .products-grid .product-item {
+        width: 100%;
+    }
+    .products.wrapper ~ .toolbar, .products.wrapper ~ .toolbar .pages {
+        width: 75%;
+    }
+}
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
     .products-list .product {
@@ -439,14 +456,37 @@
     }
 }
 
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .products.wrapper.grid.products-grid {
+        .product-item {
+            margin-bottom: 75px;
+            padding: 10px;
+            &-custom {
+                bottom: -55px;
+            }
+        }
+    }
+}
+
 //
 //  Desktop
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .page-products {
+        .columns {
+            // padding-top: 60px;
+        }
+    }
+
+    .products {
+        margin: @indent__l 0 0;
+    }
+
+    .page-products {
         .products-grid {
             .product-item {
+                padding: 8px;
                 margin-left: 2%;
                 width: calc(~'(100% - 4%) / 3');
 
@@ -460,7 +500,7 @@
     .page-products.page-layout-1column {
         .products-grid {
             .product-item {
-                width: 100%/4;
+                width: 100%/3;
             }
         }
     }
@@ -472,9 +512,32 @@
             }
         }
     }
+    
+    .products.list.items.product-items {
+        padding: 0 20px;
+    }
+
+    .products.wrapper.grid.products-grid .product-items {
+        .product-item-custom {
+            bottom: -22.5%;
+        }
+        .swatch-custom .swatch-attribute.size {
+            top: -150px;
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .products {
+        margin: @indent__l 0 0;
+    }
+
+    .toolbar .submenu {
+        display: block;
+        &.active {
+            display: none;
+        }
+    }
 
     .products-grid {
         .product-item {
@@ -498,16 +561,18 @@
         }
     }
 
+    // .page-products.page-layout-1column .products-grid .product-item
+
     .page-products {
         .products-grid {
-            .product-items {
+            .products.list.items.product-items {
                 margin: 0;
                 padding: 8px 28px 0 28px;
             }
 
             .product-item {
                 margin-left: 2%;
-                padding: 8px;
+                // padding: 8px;
                 width: calc(~'(100% - 6%)/4');
 
                 &:nth-child(3n + 1) {
@@ -546,6 +611,40 @@
                     }
                 }
             }
+        }
+    }
+    // .products.wrapper.products-grid {
+    //     .product-item {
+    //         &-custom {
+    //             bottom: -22.5%;
+    //         }
+    //     }
+    // }
+
+    .products.wrapper.grid.products-grid .product-items {
+        .product-item-custom {
+            bottom: -22.5%;
+        }
+        .swatch-custom .swatch-attribute.size {
+            top: -200px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .products.wrapper.products-grid {
+        .product-item {
+            &-custom {
+                bottom: -18.15%;
+            }
+        }
+    }
+    .products.wrapper.grid.products-grid .product-items {
+        .product-item-custom {
+            bottom: -18.15%;
+        }
+        .swatch-custom .swatch-attribute.size {
+            top: -270px;
         }
     }
 }
