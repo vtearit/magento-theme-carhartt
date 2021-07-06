@@ -323,6 +323,15 @@
     .products.wrapper ~ .toolbar, .products.wrapper ~ .toolbar .pages {
         width: 75%;
     }
+    .products-grid .product-items .product-item {
+        margin-left: 0;
+    }
+    .category-banner__text {
+        top: 2%;
+        .para1 {
+            margin-bottom: 15px;
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
@@ -458,9 +467,11 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .products.wrapper.grid.products-grid {
+        .product-items {
+            padding: 10px 8px;
+        }
         .product-item {
             margin-bottom: 75px;
-            padding: 10px;
             &-custom {
                 bottom: -55px;
             }

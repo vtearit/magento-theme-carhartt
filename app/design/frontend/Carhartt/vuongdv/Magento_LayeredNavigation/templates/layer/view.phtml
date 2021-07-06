@@ -61,32 +61,23 @@
             $(".filter-button").click(function() {
                 timesClicked++;
                 if (timesClicked%2==0) {
-                    // $('#filter-content').hide();
                     $('.submenu').removeClass("active");
                     $(".breadcrumbs").removeClass("active");
                     $(".page-title").css("display", "block");
                     $(".page-title-wrapper").css("display", "block");
                     $("#layered-filter-block").removeClass("active");
-                    // $(".filter-button").css("marginTop", "0");
-                    // $(".filter-button").css("marginBottom", "0");
                     $(".toolbar-products").css("paddingTop", "0");
                     $("#modes").css("top", "279px");
                 } else {
-                    // $('#filter-content').show();
                     $('.submenu').addClass("active");
                     $(".breadcrumbs").addClass("active");
                     $(".page-title").css("display", "none");
                     $(".page-title-wrapper").css("display", "none");
                     $("#layered-filter-block").addClass("active");
-                    // $(".filter-button").css("marginTop", "-2px");
-                    // $(".filter-button").css("marginBottom", "15px");
                     $(".toolbar-products").css("paddingTop", "8px");
                     $("#modes").css("top", "495px");
                 }
             });
-            // $('.sorter-label').click(function(){
-            //     $('#sorter').toggle('slow');
-            // });
         });
     });
 </script>

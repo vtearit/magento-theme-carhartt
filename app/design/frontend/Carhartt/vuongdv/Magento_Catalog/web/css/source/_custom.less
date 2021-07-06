@@ -80,13 +80,21 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .category-banner {
         background: @color-banner-category;
-        padding: 200px 0;
+        padding: 200px 0 201px;
+        margin-bottom: 6px;
         img {
             display: none;
         }
         &__text {
             top: 5%;
-            left: 5%;
+            left: 4.5%;
+            .para1 {
+                margin-bottom: 32px;
+                width: 95%;
+            }
+            .para2 {
+                width: 96%;
+            }
         }
     }
 }

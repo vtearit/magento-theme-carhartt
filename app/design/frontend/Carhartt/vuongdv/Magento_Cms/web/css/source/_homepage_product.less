@@ -75,18 +75,32 @@
 //  Mobile
 //  _____________________________________________
 
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__375) {
+    // .products-grid 
+}
+
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .homepage-product {
         .block-compare .block-title, .block-reorder .block-title, .block-wishlist .block-title, .widget .block-title {
             margin: 0 0 19px;
         }
+
+        .grid.products-grid .product-items {
+            padding: 0 2%;
+        }
+
+        .product-items .product-item {
+            // margin-left: 0;
+        }
+
         .product-item-info {
+            flex-direction: column;
             .product-item-details {
                 display: flex;
                 flex-direction: column;
+                position: relative;
                 //  Item name
                 .product-item-name {
-                    margin-bottom: 0;
                     a {
                         color: @color-carhartt;
                     }
@@ -114,6 +128,11 @@
                 .swatch-attribute.size {
                     display: none;
                 }
+
+                .swatch-attribute.color_text {
+                    position: relative;
+                    bottom: 0;
+                }
             }
         }
     }
@@ -125,9 +144,14 @@
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .homepage-product {
+        .products-grid .product-item {
+            margin-bottom: 22px;
+        }
+
         .block-compare .block-title, .block-reorder .block-title, .block-wishlist .block-title, .widget .block-title {
             margin: 0 0 35px;
         }
+
         .product-item-info {
             &:hover .product-item-details {
                 cursor: pointer;
@@ -146,7 +170,7 @@
                 //  Item name
                 .product-item-name {
                     position: absolute;
-                    top: 44.5%;
+                    top: 41.5%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     z-index: 1;
@@ -166,7 +190,13 @@
                     color: @color-white;
                 }
                 .price-box.price-final_price {
-                    top: 51.7%;
+                    top: 54.2%;
+                    z-index: 99;
+                }
+
+                .swatch-custom {
+                    height: 100%;
+                    top: 0;
                 }
 
                 // Item attributes
@@ -183,13 +213,12 @@
 
                 //  Size attributes
                 .swatch-attribute.size {
-                    bottom: -3.375%;
+                    bottom: 3.5%;
                     &::before {
                         content: "Size in stock";
                         position: absolute;
-                        top: -17%;
-                        left: 50%;
-                        transform: translateX(-51%);
+                        top: -29px;
+                        left: 1px;
                         font-size: @font-size-13;
                         color: @color-white;
                         width: 100%;
