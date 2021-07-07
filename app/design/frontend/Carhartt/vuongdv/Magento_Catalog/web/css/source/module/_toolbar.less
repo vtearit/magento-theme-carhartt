@@ -25,22 +25,29 @@
         text-align: center;
 
         select {
-            appearance: none;
             border: unset;
             cursor: pointer;
             font-size: @font-size-12;
             text-transform: uppercase;
-            /* for Firefox */
-            -moz-appearance: none;
-            /* for Chrome */
-            -webkit-appearance: none;
-            &::-ms-expand {
-                display: none;
-            }
-            option {
-                border: none;
+            background-image: none;
+            .sorter-labe::after {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-size: @font-size-12;
+                line-height: inherit;
+                color: @color-caret-icon;
+                content: '\f0d7';
+                font-family: @font-family__fa;
+                margin: 0 0 0 5px;
+                vertical-align: top;
+                display: inline-block;
+                font-weight: normal;
+                overflow: hidden;
+                speak: none;
+                text-align: center;
             }
         }
+        
         select#sorter {
             border: 0;
             outline: 0;
@@ -217,6 +224,7 @@
             justify-content: space-between;
             position: absolute;
             top: 0;
+            padding: 0 20px;
             width: 88.3333%;
         }
 
@@ -225,6 +233,7 @@
         }
 
         .products ~ .toolbar-products {
+            padding: 0;
             position: static;
         }
     }
