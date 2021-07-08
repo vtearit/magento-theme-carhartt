@@ -318,6 +318,7 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Magento_WishlistSampleData' => 1,
         'AHT_AttributeCustomer' => 1,
+        'AHT_ShippingEstimate' => 1,
         'Amasty_BannersLite' => 1,
         'Amasty_Base' => 1,
         'Amasty_CommonTests' => 1,
