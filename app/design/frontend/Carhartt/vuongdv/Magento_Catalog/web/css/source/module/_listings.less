@@ -40,6 +40,11 @@
         }
     }
 
+    .page-products.page-layout-1column 
+    .products-grid .product-item {
+        margin-bottom: 32px;
+    }
+
     .product {
         &-items {
             .lib-inline-block-space-container();
@@ -499,7 +504,6 @@
             padding: 10px 8px;
         }
         .product-item {
-            margin-bottom: 75px;
             &-custom {
                 bottom: -55px;
             }
@@ -620,7 +624,6 @@
         &.page-layout-1column {
             .products-grid {
                 .product-item {
-                    margin-left: 0;
                     width: 100%/4;
                 }
             }
@@ -643,7 +646,4 @@
             }
         }
     }
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
 }

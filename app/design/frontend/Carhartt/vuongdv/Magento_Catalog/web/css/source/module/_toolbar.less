@@ -86,6 +86,7 @@
 
         &-products {
             .lib-css(background-color, @toolbar-background);
+            z-index: -1;
 
             .pages {
                 display: none;
@@ -103,6 +104,10 @@
 
     .sorter {
         float: right;
+
+        #sorter {
+            font-family: @font-family-name__karla-bold;
+        }
 
         .page-products & {
             z-index: 1;
@@ -225,7 +230,8 @@
             position: absolute;
             top: 0;
             padding: 0 20px;
-            width: 88.3333%;
+            // width: 88.3333%;
+            width: 97.5%;
         }
 
         .field.limiter {
@@ -269,7 +275,7 @@
 
     .columns .column.main .modes {
         position: absolute;
-        width: 104.3%;
+        width: 97.85%;
         top: 279px;
 
         &-inner {
@@ -301,7 +307,7 @@
     }
     .page-layout-1column {
         .toolbar-products {
-            width: 91.3333%;
+            // width: 97.5%;
         }
     }
 }
