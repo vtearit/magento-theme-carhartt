@@ -1,0 +1,29 @@
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .item-content {
+        &.mobile {
+            display: block;
+        }
+        &.desktop {
+            display: none;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .item-content {
+        &.mobile {
+            display: none;
+        }
+        &.desktop {
+            display: block;
+        }
+    }
+}

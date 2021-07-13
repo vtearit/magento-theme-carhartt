@@ -1,0 +1,48 @@
+<?php
+
+use AHT\ShippingEstimate\ViewModel\Shipping;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Shipping $viewModel */
+$viewModel = $block->getData('viewModel');
+$freeShipLabel = 'FREE SHIPPING';
+
+//  Get minimum amount for free shipping
+$minAmount = $viewModel->getFreeShippingMinValue();
+// $viewModel->getFormattedPrice($viewModel->getFreeShippingMinValue(), 0);
+
+//  Get order total
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$cart = $objectManager->get('\Magento\Checkout\Model\Cart'); 
+$grandTotal = $cart->getQuote()->getGrandTotal();
+
+//  Estimate amount
+$estimateAmount = $minAmount - $grandTotal;
+$estimateAmountFormat = $viewModel->getFormattedPrice($estimateAmount, 0)
+
+?>
+<div class="freeship-estimate">
+    <?php
+        if($estimateAmount > 0) { ?>
+        <div class="freeship-message"><?= $block->escapeHtml(__('You need ')) ?>
+            <span class="estimate-label"><?= $estimateAmountFormat ?></span>
+            <?= ' to get '?>
+            <span class="freeship-label"><?= $freeShipLabel ?></span>
+            <ul class="process-bar">
+                <li class="process-label"><?= $viewModel->getFormattedPrice(0, 0) ?></li>
+                <li class="process-percent" >
+                    <div class="process-percent-inner" style="width: <?= $grandTotal/$minAmount*100 ?>%">
+                    </div>
+                </li>
+                <li class="process-label"><?= $viewModel->getFormattedPrice($minAmount, 0) ?></li>
+            </ul>
+        </div>
+        <?php
+        } else { ?>
+            <div class="freeship-message done"><?= $block->escapeHtml(__('Your order is ready for ')) ?>
+                <span class="freeship-label"><?= $freeShipLabel ?></span></div>
+        <?php 
+        }
+    ?>
+</div>

@@ -1,0 +1,56 @@
+.freeship {
+    &-estimate {
+        padding: 15px 0;
+        background-color: transparent;
+        border-top: 1px solid #ccc;
+        margin-top: 15px;
+        text-align: center;
+        width: 100%;
+    }
+    &-message {
+        font-size: @font-size-16;
+        .estimate-label {
+            color: red;
+            font-weight: 600;
+        }
+        .process {
+            &-bar {
+                display: flex;
+                padding: 0;
+                justify-content: space-between;
+                align-items: center;
+                margin: 15px 0 0 0;
+                li {
+                    display: inline-block;
+                }
+            }
+            &-label {
+                font-weight: 600;
+                margin: 0;
+                width: 10%;
+            }
+            &-percent {
+                display: inline-block;
+                background: #ddd;
+                height: 10px;
+                border-radius: 10px;
+                width: 100%;
+                margin: 0 1.5%;
+                &-inner {
+                    background: linear-gradient(30deg, #008bdb, transparent);
+                    height: 10px;
+                    border-radius: 10px;
+                }
+            }
+        }
+        &.done {
+            background: #333;
+            color: #fff;
+            border-radius: 3px;
+            padding: 5px 0;
+        }
+    }
+    &-label {
+        font-weight: 600;
+    }
+}

@@ -14,7 +14,7 @@
 <div class="toolbar-sorter sorter">
     <!-- <label class="sorter-label" for="sorter">< ?= $block->escapeHtml(__('Sort By')) ?></label> -->
     <div class="sorter-option">
-        <select id="sorter" data-role="sorter" class="sorter-options" style="appearance: none;">
+        <select id="sorter" data-role="sorter" class="sorter-options">
         <option class="sorter-label" selected="selected" style="display: none;"><?= $block->escapeHtml(__('Sort By')) ?></option>
             <?php foreach ($block->getAvailableOrders() as $_key => $_order) :?>
                 <option value="<?= $block->escapeHtmlAttr($_key) ?>"
@@ -25,3 +25,15 @@
         </select>
     </div>
 </div>
+<script type="text/javascript">
+    require(['jquery'], function($){
+        $(document).ready( function() {
+            $("#sorter").focus(function() {
+                $('.sorter').addClass("active");
+            });
+            $("#sorter").focusout(function() {
+                $('.sorter').removeClass("active");
+            });
+        });
+    });
+</script>

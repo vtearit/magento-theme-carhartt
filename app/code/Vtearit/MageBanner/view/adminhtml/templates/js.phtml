@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    require(
+        ['jquery'],
+        function($) {
+            $(function() {
+                if($('#banner_mobile_banner_type').val() == 0) {
+                        $('.field-mobile_banner_image').show();
+                        $('.field-mobile_banner_content').hide();
+                    } else {
+                        $('.field-mobile_banner_image').hide();
+                        $('.field-mobile_banner_content').show();
+                    }
+                $('#banner_mobile_banner_type').change(function(){
+                    if($('#banner_mobile_banner_type').val() == 0) {
+                        $('.field-mobile_banner_image').show();
+                        $('.field-mobile_banner_content').hide();
+                    } else {
+                        $('.field-mobile_banner_image').hide();
+                        $('.field-mobile_banner_content').show();
+                    }
+                });
+            });
+        });
+</script>

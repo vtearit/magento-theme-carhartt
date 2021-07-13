@@ -1,15 +1,12 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="checkout_cart_item_renderers"/>
     <body>
-        <referenceBlock name="checkout.cart.form" >
-            <block class="Magento\Framework\View\Element\Template" name="customer_form_additional_info" template="AHT_ShippingEstimate::test.phtml"/>        
-        </referenceBlock>
+        <referenceContainer name="cart.summary">
+            <block name="shipping.estimate" after="-" template="AHT_ShippingEstimate::estimate_message.phtml" >
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">AHT\ShippingEstimate\ViewModel\Shipping</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
     </body>
 </page>

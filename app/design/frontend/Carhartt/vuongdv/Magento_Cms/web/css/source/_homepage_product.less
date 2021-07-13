@@ -2,7 +2,7 @@
 //  Common
 //  _____________________________________________
 
-& when (@media-common = true) {
+& when (@media-common = true) {        
     .homepage-product {
         text-align: center;
         .block-title strong {
@@ -15,6 +15,9 @@
         }
         .product-item-details {
             width: 100%;
+            .swatch-attribute.color {
+                display: none;
+            }
 
             //  Item name
             .product-item-name {
@@ -172,6 +175,7 @@
                     position: absolute;
                     top: 41.5%;
                     left: 50%;
+                    margin: 10px 0 0;
                     transform: translate(-50%, -50%);
                     z-index: 1;
                     a {
@@ -200,7 +204,7 @@
                 }
 
                 // Item attributes
-                //  Color attributes
+                //  Color text attributes
                 .swatch-attribute-options.clearfix {
                     .swatch-option.text{
                         color: @color-white;
@@ -239,6 +243,9 @@
             justify-content: center;
             .product-item-details {
                 width: 378px;
+                .product-item-name {
+                    margin: 20px 0 0;
+                }
             }
         }
     }

@@ -3,6 +3,10 @@
 //  _____________________________________________
 
 & when (@media-common = true) {
+    .banner-section {
+        margin-bottom: -30px;
+    }
+
     .banner-item.banner-slider {
         position: relative;
         .banner {
@@ -45,14 +49,6 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .banner-slider {
-        &-mobile {
-            display: block;
-        }
-        &-desktop {
-            display: none;
-        }
-    }
     .banner {
         &-content {
             width: 75%;
@@ -118,10 +114,7 @@
     html {
         scroll-behavior: smooth;
     }
-    .banner-slider-mobile {
-        display: none;
-    }
-    .banner-slider-desktop {
+    .banner-section {
         position: relative;
         .banner-arrow-down {
             position: absolute;
@@ -172,7 +165,7 @@
     //  Message section
     .message {
         padding: 16px 0 18px;
-        margin-top: -30px;
+        // margin-top: -30px;
         h5  {
             &:first-child {
                 letter-spacing: .2px;

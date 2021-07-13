@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mageplaza\BannerSlider\Block\Adminhtml\Banner\Edit\Tab\Banner">
+        <plugin name="vtearit_banner_form" type="Vtearit\MageBanner\Plugin\Block\Adminhtml\Banner\Edit\Tab\Banner" sortOrder="1"/>
+    </type>
+</config>
