@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="zshape_bestsellers" class="Vtearit\BestSeller\Block\Widget\BestSellers">
+        <label translate="true">Best Seller Products</label>
+        <description translate="true">Create widget of best seller products in your store</description>
+        <parameters>
+			<parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+                <value>Best Seller</value>
+            </parameter>
+			<parameter name="max_number" xsi:type="text" visible="true">
+                <label translate="true">Max Number Products To Display</label>
+                <value></value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

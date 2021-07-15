@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Vtearit_BestSeller::core">
+					<resource id="Vtearit_BestSeller::bestsellers" title="Best Sellers" sortOrder="1">
+						<resource id="Vtearit_BestSeller::settings" title="Settings" sortOrder="0" />
+					</resource>
+                </resource>
+				<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Vtearit_BestSeller::bestsellers_config" title="Best Sellers config" translate="true" sortOrder="15" />
+                        </resource>
+                    </resource>
+                </resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

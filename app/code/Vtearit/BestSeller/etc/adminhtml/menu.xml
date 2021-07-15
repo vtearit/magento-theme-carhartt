@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Vtearit_BestSeller::bestsellers" title="Best Sellers" module="Vtearit_BestSeller" sortOrder="200" parent="Magento_Backend::content" resource="Vtearit_BestSeller::bestsellers"/>
+		<add id="Vtearit_BestSeller::settings" title="Configuration" module="Vtearit_BestSeller" sortOrder="0" parent="Vtearit_BestSeller::bestsellers" action="adminhtml/system_config/edit/section/vtearit_bestsellers" resource="Vtearit_BestSeller::bestsellers"/>
+	</menu>
+</config>

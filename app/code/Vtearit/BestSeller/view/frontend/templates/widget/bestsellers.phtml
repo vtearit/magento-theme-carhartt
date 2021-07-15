@@ -1,0 +1,100 @@
+<?php
+	$bestsellers = $block->getBestSellers();
+	$moduleEnable = $block->getModuleEnable();
+	$bestSellerTotal = 0;
+	if($moduleEnable) {
+		if(count($bestsellers)) {
+			$imageId = 'category_page_grid';
+			$title = $block->getBestSellerParam('title');
+			$maxNumber = $block->getBestSellerParam('max_number');
+			// $carousel = $block->getBestSellersParam('carousel');
+			// $productsToShow = $block->getBestSellersParam('products_to_show');
+			// $autoplay = $block->getBestSellersParam('autoplay');
+			// $autoplaySpeed = $autoplay ? $block->getBestSellersParam('autoplay_speed') : 0 ;
+			// $wishlistLink = $block->getWishlistEnable();
+			// $compareLink = $block->getCompareEnable();
+?>
+	<div class="block widget block-products-list grid vtearit-bestsellers">
+		<?php if ($title): ?>
+		<div class="block-title">
+			<h2><?= $block->escapeHtml(__($title)) ?></h2>
+		</div>
+		<?php endif ?>
+		<div class="block-content">
+			<div class="bestsellers-grid grid">
+				<ol class="product-items widget-product-grid bestseller_items">
+					<?php foreach($bestsellers as $bestseller) { $bestSellerTotal++; $productUrl = $bestseller->getProductUrl(); $productName = $block->escapeHtml($bestseller->getName()); ?>
+						<p><?php
+							// echo $bestseller->getProductUrl().'<br/>';
+							// echo $bestseller->getQtyOrdered().'<br/>';
+							// echo $bestseller->getId();
+							?></p>
+						<li class="product-item bestseller_item">
+							<div class="bestseller-item-info">
+								<a href="<?php echo $productUrl; ?>" class="product-item-photo"><?php echo $block->getImage($bestseller, $imageId)->toHtml(); ?></a>
+								<div class="product-item-details">
+									<strong class="product-item-name">
+										<a href="<?php echo $productUrl; ?>" title="<?php echo $productName; ?>" class="product-item-link"><?php echo $productName; ?></a>
+									</strong>
+									<div class="price-box"><?php echo $bestseller->getFormatedPrice(); ?></div>
+									<div class="quantity-order">
+										<?php echo $bestseller->getQtyOrdered(); ?>
+									</div>
+									<?php echo $block->getReviewsSummaryHtml($bestseller); ?>
+									<div class="product-item-actions">
+										<div class="actions-primary">
+											<?php if ($bestseller->isSaleable()) { ?>
+												<?php if ($bestseller->getTypeInstance()->hasRequiredOptions($bestseller)): ?>
+													<button class="action tocart primary" data-mage-init='{"redirectUrl":{"url":"<?= $block->escapeUrl($block->getAddToCartUrl($bestseller)) ?>"}}' type="button" title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>">
+														<span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+													</button>
+												<?php else: ?>
+													<?php
+														$postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+														$postData = $postDataHelper->getPostData($block->getAddToCartUrl($bestseller), ['product' => $bestseller->getEntityId()])
+													?>
+													<button class="action tocart primary" data-post='<?= /* @noEscape */ $postData ?>' type="button" title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>">
+														<span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+													</button>
+												<?php endif; ?>
+											<?php } else { ?>
+												<div class="stock unavailable"><span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					<?php } ?>
+				</ol>
+				<!-- Show More Button -->
+				<div class="show-more">
+					<?php if($maxNumber<$bestSellerTotal) { 
+					echo '<button type="submit" class="hollow-button" id="btn-more">Show More</button>'; ?>
+						<script>
+						require(['jquery'], function($) {
+							require(['jquery'], function($){
+								$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').hide();
+								var count=0;
+								$('#btn-more').click(function(){
+									count++;
+									if(count%2) {
+										$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').toggle();
+										$('#btn-more').html('Hide');
+									} else {
+										$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').hide();
+										$('#btn-more').html('Show More');
+									}
+								});
+							});
+						});
+						</script>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+<?php } ?>
+
+
