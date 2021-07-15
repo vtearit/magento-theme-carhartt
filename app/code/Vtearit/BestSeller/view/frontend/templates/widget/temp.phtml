@@ -1,0 +1,14 @@
+<?php
+	$quantity =  $block->getBestSellerData(); ?>
+	<h1>Best Seller Collection.....</h1>
+	<ul>
+	<?php foreach ($quantity as $product) {
+		?>
+		<li><?php  echo $product->getProductName();?>
+		<?php  
+		echo $product->getProductUrl();
+		echo $product->getQtyOrdered();?></li>
+        <div class="price-box">
+		<?php echo $block->getPriceById($product->getProductId())	; ?></div>
+	<?php } ?>
+</ul>

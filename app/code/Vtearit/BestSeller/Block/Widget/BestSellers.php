@@ -8,6 +8,7 @@ use Magento\Catalog\Model\ProductRepository;
 use Magento\Catalog\Block\Product\AbstractProduct;
 use Vtearit\BestSeller\Model\ResourceModel\Collection;
 use Vtearit\BestSeller\Helper\Data;
+use Magento\Catalog\Helper\Image;
 
 class BestSellers extends Template implements BlockInterface 
 {
@@ -50,7 +51,12 @@ class BestSellers extends Template implements BlockInterface
 		Collection $bestsellers, 
 		ProductRepository $productRepository,
 		AbstractProduct $abstractProduct,
+		\Magento\Sales\Model\ResourceModel\Report\Bestsellers\CollectionFactory $collectionFactory,
+		\Magento\Catalog\Model\ProductFactory $productFactory,
+		\Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
 		Data $helper,
+		// \Magento\Catalog\Api\ProductRepositoryInterface $productrepository,
+		// \Magento\Store\Model\StoreManagerInterface $storemanage,
 		array $data = []
 	)
 	{
@@ -59,7 +65,43 @@ class BestSellers extends Template implements BlockInterface
 		$this->productRepository = $productRepository;
 		$this->abstractProduct = $abstractProduct;
 		$this->helper = $helper;
+		$this->_collectionFactory = $collectionFactory;
+		$this->productFactory = $productFactory;
+		$this->priceCurrency = $priceCurrency;
+		// $this->_storeManager =  $storemanager;
 	}
+
+	public function getProductImageUsingCode($productId)
+{
+         $store = $this->_storeManager->getStore();
+         $product = $this->productrepository->getById($productid);
+ 
+         $productImageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' .$product->getImage();
+         $productUrl = $product->getProductUrl();
+         return $productUrl;
+}
+
+	public function getCurrencyWithFormat($price)
+    {
+        return $this->priceCurrency->format($price,true,2);
+    }
+
+
+	public function getBestSellerData(){
+		$bestSellerProdcutCollection = $this->_collectionFactory->create()
+		->setModel('Magento\Catalog\Model\Product')
+		->setPeriod('month') //you can add period daily,yearly
+		;	
+		return $bestSellerProdcutCollection;
+	}
+
+	public function getPriceById($id)
+{
+    //$id = '21'; //Product ID
+    $product = $this->productFactory->create();
+    $productPriceById = $product->load($id)->getPrice();
+    return $productPriceById;
+}
 	
 	/**
 	 * @return array 
