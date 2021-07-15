@@ -55,31 +55,61 @@ class BestSellers extends Template implements BlockInterface
 		\Magento\Catalog\Model\ProductFactory $productFactory,
 		\Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
 		Data $helper,
-		// \Magento\Catalog\Api\ProductRepositoryInterface $productrepository,
-		// \Magento\Store\Model\StoreManagerInterface $storemanage,
+        \Magento\Catalog\Helper\ImageFactory $imageHelperFactory,
+		// \Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable $catalogProductTypeConfigurable,
+		\Magento\ConfigurableProduct\Model\Product\Type\Configurable $configurable,
 		array $data = []
 	)
 	{
 		parent::__construct($context, $data);
 		$this->bestsellers = $bestsellers;
 		$this->productRepository = $productRepository;
+        $this->imageHelperFactory = $imageHelperFactory;
 		$this->abstractProduct = $abstractProduct;
 		$this->helper = $helper;
 		$this->_collectionFactory = $collectionFactory;
 		$this->productFactory = $productFactory;
 		$this->priceCurrency = $priceCurrency;
-		// $this->_storeManager =  $storemanager;
+		//for getting parent id of simple
+		// $this->_catalogProductTypeConfigurable = $catalogProductTypeConfigurable;
+		$this->configurable = $configurable;
 	}
 
-	public function getProductImageUsingCode($productId)
-{
-         $store = $this->_storeManager->getStore();
-         $product = $this->productrepository->getById($productid);
- 
-         $productImageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' .$product->getImage();
-         $productUrl = $product->getProductUrl();
-         return $productUrl;
-}
+	public function getImageBestSeller($id){
+        $product = $this->productFactory->create()->load($id);
+        // $imageUrl = $this->imageHelperFactory->create()->init($product, 'category_page_grid')->getUrl();
+        $imageUrl = $this->imageHelperFactory->create()->init($product, 'recently_viewed_products_grid_content_widget')->getUrl();
+        return $imageUrl;
+    }
+
+	// Get parent by child
+	public function getParentProductId($childProductId)
+    {
+		$parentConfigObject = $this->configurable->getParentIdsByChild($childProductId);
+		if($parentConfigObject) {
+			return $parentConfigObject[0];
+		}
+		return false;
+    }
+
+
+	/**
+	 * This method returns the url from the product id
+	 *
+	 * @return string|null
+	 */
+	public function getProductUrlById($id)
+	{
+		// $sku = "24-MB01";
+		try {
+			$productUrl = $this->productRepository->get($id)
+				->getProductUrl();
+
+		} catch (NoSuchEntityException $noSuchEntityException) {
+		$productUrl = null;
+		}
+		return $productUrl;
+	}
 
 	public function getCurrencyWithFormat($price)
     {

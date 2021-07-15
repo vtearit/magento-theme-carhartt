@@ -2,16 +2,24 @@
 	$quantity =  $block->getBestSellerData();
 	$imageId = 'category_page_grid';
 	?>
-	<h1>Best Seller Collection.....</h1>
+	<h1>Best Seller Collection.....
+	</h1>
 	<ul>
 	<?php foreach ($quantity as $product) {
 		?>
-		<li><?php  echo $product->getProductName();?>
+		<li>
+		<?php $productId = $product->getProductId(); ?>
+		<p><?php echo $parentId = $block->getParentProductId($productId); ?></p>
+		<a href="<?php echo $product->getProductUrl() ?>" class="product-item-photo">
+			<img src="<?= $block->getImageBestSeller($productId); ?> " alt="" /></a>
+		<?php echo $product->getProductName().'<br/>';
+			echo $productId.'<br/>';
+		?>
 		<?php  
-		echo $product->getProductUrl();
+		echo $product->getProductUrl().'<br/>';
 		echo number_format($product->getQtyOrdered());?></li>
         <div class="price-box">
-		<?php $price = $block->getPriceById($product->getProductId());
+		<?php $price = $block->getPriceById($productId);
 			echo $block->getCurrencyWithFormat($price);
 		?></div>
 	<?php } ?>
