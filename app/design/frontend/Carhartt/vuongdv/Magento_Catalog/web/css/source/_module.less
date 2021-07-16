@@ -666,6 +666,10 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .products.wrapper.grid.products-grid {
+        padding: 0 50px;
+    }
+
     .product-info-main {
         .page-title-wrapper {
             h1 {
@@ -1118,6 +1122,10 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .products.wrapper.grid.products-grid {
+        padding: 0 20px;
+    }
+
     .box-tocart {
         .paypal:first-of-type {
             margin-top: 13px;

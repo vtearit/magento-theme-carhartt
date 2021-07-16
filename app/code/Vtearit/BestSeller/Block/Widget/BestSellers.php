@@ -6,7 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Widget\Block\BlockInterface;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Catalog\Block\Product\AbstractProduct;
-use Vtearit\BestSeller\Model\ResourceModel\Collection;
+// use Vtearit\BestSeller\Model\ResourceModel\Collection;
 use Vtearit\BestSeller\Helper\Data;
 use Magento\Catalog\Helper\Image;
 
@@ -21,10 +21,10 @@ class BestSellers extends Template implements BlockInterface
      */
     protected $_template = 'widget/bestsellers.phtml';
 	
-	/**
-	 * @var \Vtearit\BestSeller\Model\ResourceModel\Collection 
-	 */
-	protected $bestsellers;
+	// /**
+	//  * @var \Vtearit\BestSeller\Model\ResourceModel\Collection 
+	//  */
+	// protected $bestsellers;
 	
 	/**
 	 * @var \Magento\Catalog\Model\ProductRepository;
@@ -48,21 +48,20 @@ class BestSellers extends Template implements BlockInterface
 	 */
 	public function __construct(
 		Template\Context $context, 
-		Collection $bestsellers, 
+		// Collection $bestsellers, 
 		ProductRepository $productRepository,
 		AbstractProduct $abstractProduct,
 		\Magento\Sales\Model\ResourceModel\Report\Bestsellers\CollectionFactory $collectionFactory,
 		\Magento\Catalog\Model\ProductFactory $productFactory,
 		\Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
-		Data $helper,
         \Magento\Catalog\Helper\ImageFactory $imageHelperFactory,
-		// \Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable $catalogProductTypeConfigurable,
 		\Magento\ConfigurableProduct\Model\Product\Type\Configurable $configurable,
+		Data $helper,
 		array $data = []
 	)
 	{
 		parent::__construct($context, $data);
-		$this->bestsellers = $bestsellers;
+		// $this->bestsellers = $bestsellers;
 		$this->productRepository = $productRepository;
         $this->imageHelperFactory = $imageHelperFactory;
 		$this->abstractProduct = $abstractProduct;
@@ -70,8 +69,6 @@ class BestSellers extends Template implements BlockInterface
 		$this->_collectionFactory = $collectionFactory;
 		$this->productFactory = $productFactory;
 		$this->priceCurrency = $priceCurrency;
-		//for getting parent id of simple
-		// $this->_catalogProductTypeConfigurable = $catalogProductTypeConfigurable;
 		$this->configurable = $configurable;
 	}
 
@@ -100,7 +97,6 @@ class BestSellers extends Template implements BlockInterface
 	 */
 	public function getProductUrlById($id)
 	{
-		// $sku = "24-MB01";
 		try {
 			$productUrl = $this->productRepository->get($id)
 				->getProductUrl();
@@ -116,50 +112,51 @@ class BestSellers extends Template implements BlockInterface
         return $this->priceCurrency->format($price,true,2);
     }
 
-
+	/**
+	 * @return array 
+	 */
 	public function getBestSellerData(){
 		$bestSellerProdcutCollection = $this->_collectionFactory->create()
 		->setModel('Magento\Catalog\Model\Product')
-		->setPeriod('month') //you can add period daily,yearly
+		->setPeriod('month') // You can add period daily,yearly
 		;	
 		return $bestSellerProdcutCollection;
 	}
 
 	public function getPriceById($id)
-{
-    //$id = '21'; //Product ID
-    $product = $this->productFactory->create();
-    $productPriceById = $product->load($id)->getPrice();
-    return $productPriceById;
-}
-	
-	/**
-	 * @return array 
-	 */
-	public function getBestSellers()
 	{
-		$bestsellers = array();
+		$product = $this->productFactory->create();
+		$productPriceById = $product->load($id)->getPrice();
+		return $productPriceById;
+	}
+	
+	// /**
+	//  * @return array 
+	//  */
+	// public function getBestSellers()
+	// {
+	// 	$bestsellers = array();
 		
-		if(count($this->bestsellers)) {
-			foreach($this->bestsellers as $bestseller) {
-				$productId = $bestseller->getProductId();
-				$bestsellers[] = $this->productRepository->getById($productId);
-			}
-		}
+	// 	if(count($this->bestsellers)) {
+	// 		foreach($this->bestsellers as $bestseller) {
+	// 			$productId = $bestseller->getProductId();
+	// 			$bestsellers[] = $this->productRepository->getById($productId);
+	// 		}
+	// 	}
 
-		return $bestsellers;
-	}
+	// 	return $bestsellers;
+	// }
 	
-	/**
-	 * @param \Magento\Catalog\Model\Product $product
-	 * @param string $imageId 
-	 * @param array $attributes
-	 * @return \Magento\Catalog\Block\Product\Image
-	 */
-	public function getImage($product, $imageId, $attributes = [])
-	{
-		return $this->abstractProduct->getImage($product, $imageId, $attributes = []);
-	}
+	// /**
+	//  * @param \Magento\Catalog\Model\Product $product
+	//  * @param string $imageId 
+	//  * @param array $attributes
+	//  * @return \Magento\Catalog\Block\Product\Image
+	//  */
+	// public function getImage($product, $imageId, $attributes = [])
+	// {
+	// 	return $this->abstractProduct->getImage($product, $imageId, $attributes = []);
+	// }
 	
 	/**
 	 * @param \Magento\Catalog\Model\Product $product
@@ -171,19 +168,19 @@ class BestSellers extends Template implements BlockInterface
 		return $this->abstractProduct->getAddToCartUrl($product, $additional = []);
 	}
 	
-	/**
-     * @param \Magento\Catalog\Model\Product $product
-     * @param bool $templateType
-     * @param bool $displayIfNoReviews
-     * @return string
-     */
-    public function getReviewsSummaryHtml(
-        \Magento\Catalog\Model\Product $product,
-        $templateType = false,
-        $displayIfNoReviews = false
-    ) {
-		return $this->abstractProduct->getReviewsSummaryHtml($product, $templateType, $displayIfNoReviews);
-	}
+	// /**
+    //  * @param \Magento\Catalog\Model\Product $product
+    //  * @param bool $templateType
+    //  * @param bool $displayIfNoReviews
+    //  * @return string
+    //  */
+    // public function getReviewsSummaryHtml(
+    //     \Magento\Catalog\Model\Product $product,
+    //     $templateType = false,
+    //     $displayIfNoReviews = false
+    // ) {
+	// 	return $this->abstractProduct->getReviewsSummaryHtml($product, $templateType, $displayIfNoReviews);
+	// }
 
 	/**
      * @return bool

@@ -9,6 +9,8 @@
     <body>
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template" name="category.banner" template="Magento_Catalog::category_banner.phtml" />
+            <block class="Magento\Framework\View\Element\Template" name="category.bestseller" template="Magento_Catalog::best_seller.phtml" />
+            <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="category.modes.custom" template="Magento_Catalog::product/list/toolbar/viewmode.phtml" before="-" />
         </referenceContainer>
     </body>
 </page>

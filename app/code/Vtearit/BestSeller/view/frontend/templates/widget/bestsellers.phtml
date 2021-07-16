@@ -1,26 +1,92 @@
 <?php
-	$quantity =  $block->getBestSellerData();
-	$imageId = 'category_page_grid';
-	?>
-	<h1>Best Seller Collection.....
-	</h1>
-	<ul>
-	<?php foreach ($quantity as $product) {
-		?>
-		<li>
-		<?php $productId = $product->getProductId(); ?>
-		<p><?php echo $parentId = $block->getParentProductId($productId); ?></p>
-		<a href="<?php echo $product->getProductUrl() ?>" class="product-item-photo">
-			<img src="<?= $block->getImageBestSeller($productId); ?> " alt="" /></a>
-		<?php echo $product->getProductName().'<br/>';
-			echo $productId.'<br/>';
-		?>
-		<?php  
-		echo $product->getProductUrl().'<br/>';
-		echo number_format($product->getQtyOrdered());?></li>
-        <div class="price-box">
-		<?php $price = $block->getPriceById($productId);
-			echo $block->getCurrencyWithFormat($price);
-		?></div>
-	<?php } ?>
-</ul>
+	$bestsellers =  $block->getBestSellerData();
+	$moduleEnable = $block->getModuleEnable();
+	$bestSellerTotal = 0;
+	if($moduleEnable) {
+		$title = $block->getBestSellerParam('title');
+		$maxNumber = $block->getBestSellerParam('max_number');
+?>
+	<div class="block widget block-products-list grid vtearit-bestsellers">
+		<?php if ($title): ?>
+		<div class="block-title">
+			<h2><?= $block->escapeHtml(__($title)) ?></h2>
+		</div>
+		<?php endif ?>
+		<div class="block-content">
+			<div class="bestsellers-grid grid">
+				<ol class="product-items widget-product-grid bestseller_items">
+					<?php foreach($bestsellers as $bestseller) { $bestSellerTotal++; $bestsellerId = $bestseller->getProductId(); $bestsellerUrl = $bestseller->getProductUrl(); 
+						$bestsellerName = $block->escapeHtml($bestseller->getProductName()); ?>
+						<li class="product-item bestseller_item">
+							<div class="product-item-info">
+								<a href="<?php echo $bestsellerUrl; ?>" class="product-item-photo">
+									<img src="<?= $block->getImageBestSeller($bestsellerId); ?> " alt="" />
+								</a>
+								<div class="product-item-details">
+									<strong class="product-item-name">
+										<a href="<?php echo $bestsellerUrl; ?>" title="<?php echo $bestsellerName; ?>" class="product-item-link"><?php echo $bestsellerName; ?></a>
+									</strong>
+									<div class="price-quantity">
+										<div class="price-box"><span>Price: </span><?php $price = $block->getPriceById($bestsellerId); echo $block->getCurrencyWithFormat($price); ?></div>
+										<div class="quantity-order">
+											<span>Number Sold: </span>
+											<strong><?php echo number_format($bestseller->getQtyOrdered()); ?></strong>
+										</div>
+									</div>
+									<?php
+										// echo $block->getReviewsSummaryHtml($bestseller); 
+									?>
+									<div class="product-item-actions">
+										<div class="actions-primary">
+											<?php if ($bestseller->isSaleable()) { ?>
+												<?php if ($bestseller->getTypeInstance()->hasRequiredOptions($bestseller)): ?>
+													<button class="action tocart primary" data-mage-init='{"redirectUrl":{"url":"<?= $block->escapeUrl($block->getAddToCartUrl($bestseller)) ?>"}}' type="button" title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>">
+														<span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+													</button>
+												<?php else: ?>
+													<?php
+														$postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+														$postData = $postDataHelper->getPostData($block->getAddToCartUrl($bestseller), ['product' => $bestseller->getEntityId()])
+													?>
+													<button class="action tocart primary" data-post='<?= /* @noEscape */ $postData ?>' type="button" title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>">
+														<span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+													</button>
+												<?php endif; ?>
+											<?php } else { ?>
+												<div class="stock unavailable"><span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					<?php } ?>
+				</ol>
+				<!-- Show More Button -->
+				<div class="show-more">
+					<?php if($maxNumber<$bestSellerTotal) { 
+					echo '<button type="submit" class="hollow-button" id="btn-more">Show More</button>'; ?>
+						<script>
+						require(['jquery'], function($) {
+							require(['jquery'], function($){
+								$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').hide();
+								var count=0;
+								$('#btn-more').click(function(){
+									count++;
+									if(count%2) {
+										$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').toggle();
+										$('#btn-more').html('Hide');
+									} else {
+										$('.bestseller_items .bestseller_item:gt(<?= $maxNumber-1 ?>)').hide();
+										$('#btn-more').html('Show More');
+									}
+								});
+							});
+						});
+						</script>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>

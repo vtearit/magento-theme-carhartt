@@ -54,10 +54,6 @@
         }
         &-sorter.sorter {
             position: relative;
-            .sorter-option {
-                // position: absolute;
-                // right: 0px;
-            }
         }
         &-amount {
             display: none;
@@ -98,22 +94,6 @@
         }
     }
 
-    // .sorter #sorter:focus {
-    //     color: @color-search-boder;
-    //     option {
-    //         color: @color-text-menu-mobile;
-    //     }
-    //     &::after & ~ {
-    //         color: @color-search-boder;
-    //         content: '\f0d8';
-    //     }
-    // }
-    // #sorter:focus {
-    //     .sorter::after & ~ {
-    //         color: @color-search-boder;
-    //         content: '\f0d8';
-    //     }
-    // }
     .sorter {
         float: right;
 
@@ -305,6 +285,9 @@
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .columns .column.main .toolbar-products > .modes-extend {
+        display: none;
+    }
     .page-layout-1column {
         .toolbar-products {
             align-items: center;
@@ -312,9 +295,7 @@
             justify-content: space-between;
             position: absolute;
             top: 0;
-            padding: 0 20px;
-            // width: 88.3333%;
-            width: 97.5%;
+            width: 100%;
         }
 
         .field.limiter {
@@ -344,7 +325,7 @@
             margin-bottom: 0;
         }
         &-sorter.sorter {
-            margin-right: 25px;
+            margin-right: 40px;
         }
         .submenu {
             display: none;
@@ -357,9 +338,18 @@
     }
 
     .columns .column.main .modes {
-        position: absolute;
-        width: 97.85%;
-        top: 279px;
+        width: 97.5%;
+        &-extend {
+            display: flex;
+            justify-content: center;
+            top: 279px;
+            position: absolute;
+            width: 100%;
+        }
+
+        &-mode:first-child {
+            padding-bottom: 10px;
+        }
 
         &-inner {
             display: flex;
@@ -382,19 +372,6 @@
     }
 }
 
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
-    .toolbar {
-        &-sorter.sorter {
-            margin-right: 20px;
-        }
-    }
-    .page-layout-1column {
-        .toolbar-products {
-            width: 95%;
-        }
-    }
-}
-
 //
 //  Mobile
 //  _____________________________________________
@@ -406,6 +383,14 @@
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .columns .column.main {
+        .modes-extend {
+            display: none;
+        }
+        .toolbar-products > .modes-extend {
+            display: block;
+        }
+    }
     .toolbar.toolbar-products {
         display: flex;
         justify-content: space-between;

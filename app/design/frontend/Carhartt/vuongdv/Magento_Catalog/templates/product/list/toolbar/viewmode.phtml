@@ -12,36 +12,38 @@
  */
 ?>
 <?php if ($block->isEnabledViewSwitcher()) :?>
-    <div class="modes" id="modes">
-        <div class="modes-inner">
-            <?php $_modes = $block->getModes(); ?>
-            <?php if ($_modes && count($_modes) > 1) :?>
-                <div class="modes-custom">
-                    <?php foreach ($block->getModes() as $_code => $_label) :?>
-                        <?php if ($block->isModeActive($_code)) :?>
-                            <strong title="<?= $block->escapeHtmlAttr($_label) ?>"
-                                    class="modes-mode active mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
-                                    data-value="<?= $block->escapeHtmlAttr(strtolower($_code)) ?>">
-                                <span><?= $block->escapeHtml($_label) ?></span>
-                            </strong>
-                        <?php else :?>
-                            <a class="modes-mode mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
-                            title="<?= $block->escapeHtmlAttr($_label) ?>"
-                            href="#"
-                            data-role="mode-switcher"
-                            data-value="<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
-                            id="mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
-                            aria-labelledby="modes-label mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>">
-                                <span><?= $block->escapeHtml($_label) ?></span>
-                            </a>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-                <div class="infor-button">
-                    <h5 class="hide-button show-hide-button" style="cursor:pointer">Hide info</h5>
-                    <h5 class="show-button show-hide-button" style="display: none; cursor:pointer">Show info</h5>
-                </div>
-            <?php endif; ?>
+    <div class="modes-extend">
+        <div class="modes" id="modes">
+            <div class="modes-inner">
+                <?php $_modes = $block->getModes(); ?>
+                <?php if ($_modes && count($_modes) > 1) :?>
+                    <div class="modes-custom">
+                        <?php foreach ($block->getModes() as $_code => $_label) :?>
+                            <?php if ($block->isModeActive($_code)) :?>
+                                <strong title="<?= $block->escapeHtmlAttr($_label) ?>"
+                                        class="modes-mode active mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                                        data-value="<?= $block->escapeHtmlAttr(strtolower($_code)) ?>">
+                                    <span><?= $block->escapeHtml($_label) ?></span>
+                                </strong>
+                            <?php else :?>
+                                <a class="modes-mode mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                                title="<?= $block->escapeHtmlAttr($_label) ?>"
+                                href="#"
+                                data-role="mode-switcher"
+                                data-value="<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                                id="mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                                aria-labelledby="modes-label mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>">
+                                    <span><?= $block->escapeHtml($_label) ?></span>
+                                </a>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="infor-button">
+                        <h5 class="hide-button show-hide-button" style="cursor:pointer">Hide info</h5>
+                        <h5 class="show-button show-hide-button" style="display: none; cursor:pointer">Show info</h5>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 <?php endif; ?>
